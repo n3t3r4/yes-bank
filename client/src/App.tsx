@@ -6,9 +6,9 @@ function App() {
   return (
     <>
       <AppBar />
-      <body className="bg-[#175FAB] h-[100%] w-[100%] fixed overflow-scroll pb-14">
+      <div className="bg-[#175FAB] h-[100%] w-[100%] fixed overflow-scroll pb-14">
         <Wallet />
-      </body>
+      </div>
     </>
   );
 }

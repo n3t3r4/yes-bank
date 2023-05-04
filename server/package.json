@@ -5,7 +5,14 @@
   "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.ts"
+    "start": "nodemon --ignore src/ index.ts"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      ".git",
+      "node_modules/**/node_modules",
+      "src/*.json"
+    ]
   },
   "author": "",
   "license": "ISC",

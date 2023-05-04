@@ -29,10 +29,14 @@ app.post("/:saldo", (req: Request, res: Response) => {
   res.end();
 });
 
-app.patch("/:id&:saldo", (req: Request, res: Response) => {
+app.patch("/", (req: Request, res: Response) => {
   const id = Number(req.params.id);
   const saldo = Number(req.params.saldo);
-  editWallet(id, saldo);
+
+  const idQuery = Number(req.query.id);
+  const saldoQuery = Number(req.query.saldo);
+
+  editWallet(idQuery, saldoQuery);
   res.end();
 });
 

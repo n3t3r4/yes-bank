@@ -3,32 +3,19 @@ import { api } from "../api";
 import { WalletsList } from "./WalletsList";
 
 export function Wallet() {
-  const initialWallets: [
-    {
-      id: number;
-      saldo: number;
-    }
-  ] = [
-    {
-      id: 0,
-      saldo: 0,
-    },
-  ];
-
-  type Wallet = {
+  type Wallets = {
     id: number;
     saldo: number;
   };
 
-  const [wallets, updateWallets] = useState<Wallet[]>([]);
+  const [wallets, updateWallets] = useState<Wallets[]>([]);
 
   useEffect(() => {
     api.get("/").then((data) => {
       updateWallets(data.data);
     });
-  }, []);
-
-  /* console.log(wallets); */
+    return;
+  }, [wallets]);
 
   return (
     <div className="bg-gray-200 mx-20 my-10 rounded-md">
@@ -48,11 +35,11 @@ export function Wallet() {
             });
           }}
         >
-          Adicionar conta
+          Adicionar Conta
         </button>
       </div>
 
-      <WalletsList wallets={wallets} />
+      <WalletsList wallets={wallets} updateWallets={updateWallets} />
     </div>
   );
 }
