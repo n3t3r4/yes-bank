@@ -14,7 +14,7 @@ app.use(cors());
 
 app.get("/", (req: Request, res: Response) => {
   const walletsList = walletList();
-  res.json(walletsList);
+  res.json(walletsList.sort((a, b) => a.id - b.id));
 });
 
 app.get("/:id", (req: Request, res: Response) => {
